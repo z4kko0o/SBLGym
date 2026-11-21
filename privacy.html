@@ -57,9 +57,10 @@ footer p { color: var(--muted); }
 
 <h2>Information the app handles</h2>
 <ul>
-  <li><b>What you enter:</b> your profile (name, units, sex, age, height, body weight, experience, goal, activity level, training preferences and equipment), your training split, workout sessions (exercises, sets, reps, weights, notes), food logs, water intake, custom foods and recipes, and body-weight entries.</li>
+  <li><b>What you enter:</b> your profile (name, units, sex, age, height, body weight, experience, goal, activity level, training preferences and equipment), your training split, workout sessions (exercises, sets, reps, weights, notes), food logs, water intake, custom foods and recipes, body-weight entries and body measurements.</li>
+  <li><b>Progress photos, only if you add them:</b> stored only on your phone. They are never uploaded, synced to Google Drive or included in backups.</li>
   <li><b>Your Google account, if you sign in:</b> your email address, name and profile photo URL, used to show which account is signed in and to keep each account's log separate on the phone.</li>
-  <li><b>Meal photos, only if you use photo estimates:</b> a photo you choose or take is sent for analysis as described under "AI features". The app doesn't keep the photo after the estimate.</li>
+  <li><b>Meal photos, only if you use photo estimates:</b> a photo you choose or take is analysed on your phone by the on-device AI, or sent to Claude or Gemini if you chose one of them, as described under "AI features". The app doesn't keep the photo after the estimate.</li>
   <li><b>An Anthropic or Google Gemini API key, only if you add one:</b> stored on your phone to use the AI features.</li>
   <li><b>Barcodes, only when you scan one:</b> the barcode number of a packaged food, used to look up its nutrition label as described under "Barcode scanning".</li>
 </ul>
@@ -81,7 +82,11 @@ footer p { color: var(--muted); }
 <p>SBL Gym's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. The app uses Google user data only to provide its features to you. It doesn't sell it, use it for advertising, or let anyone read it, except as described under "AI features" when you choose to use them.</p>
 
 <h2>AI features (optional)</h2>
-<p>Photo calorie estimates, meal-description parsing and the coach use an AI model of your choice: Claude, made by Anthropic, or Gemini, made by Google. They work only if you add your own API key for one of them, and they run only when you use them. When you do, the app sends the request directly from your phone to that provider over an encrypted connection. Depending on the feature, the request contains the meal photo or description, or a summary of your training, nutrition and body-weight data needed to answer your question.</p>
+<p>Photo calorie estimates, meal-description parsing and the coach use an AI model of your choice. They run only when you use them.</p>
+<ul>
+  <li><b>On-device AI:</b> if you download it in Settings › AI, the model runs entirely on your phone. Your photos, meal descriptions, coach questions and training data are processed on the phone and never sent anywhere. The model files (from the Qwen team) are downloaded once from Hugging Face (huggingface.co), which, like any website, receives your IP address and the files requested when you download them; nothing about you or your data is sent with that download.</li>
+</ul>
+<p>If you add your own API key for Claude, made by Anthropic, or Gemini, made by Google, and choose that provider, the app sends the request directly from your phone to it over an encrypted connection. Depending on the feature, the request contains the meal photo or description, or a summary of your training, nutrition and body-weight data needed to answer your question.</p>
 <ul>
   <li><b>Claude:</b> processed under your agreement with Anthropic and <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>.</li>
   <li><b>Gemini:</b> processed under the <a href="https://ai.google.dev/gemini-api/terms">Gemini API Additional Terms of Service</a> and <a href="https://policies.google.com/privacy">Google's privacy policy</a>. On Gemini's free (unpaid) tier, Google may use what you send to improve its products, and people may review it. Keys on a paid Google Cloud billing account aren't used that way.</li>
@@ -91,23 +96,27 @@ footer p { color: var(--muted); }
 <h2>Barcode scanning (optional)</h2>
 <p>Scanning uses Google's code scanner on your phone, which reads the barcode without giving the app access to your camera. The app then sends only the barcode number to <a href="https://world.openfoodfacts.org/">Open Food Facts</a>, a free, open database of food products, to get the product's name and nutrition label. Open Food Facts handles that request under <a href="https://world.openfoodfacts.org/privacy">its privacy policy</a>. The product is saved to your own foods so later scans of it don't need a lookup.</p>
 
-<h2>Notifications</h2>
+<h2>Notifications, voice coach and widget</h2>
 <p>If you allow it, the app shows a local notification when a rest timer ends while the screen is off. These alerts are scheduled on your phone; nothing is sent anywhere.</p>
+<p>If you turn on the voice coach, the app passes short phrases (such as "10 seconds" or your next exercise and weight) to the text-to-speech engine installed on your phone, which speaks them under its own settings. The app doesn't send them anywhere itself.</p>
+<p>If you add the home-screen widget, it shows today's workout, calories and water from the app. That information stays on your phone.</p>
 
 <h2>Sharing</h2>
-<p>The app doesn't share your information with anyone. Data leaves your phone only to the services you choose to use: Google Drive when you sign in with Google, Anthropic or Google's Gemini API when you use an AI feature with your own key, and Open Food Facts (the barcode number only) when you scan a product.</p>
+<p>The app doesn't share your information with anyone. Data leaves your phone only to the services you choose to use: Google Drive when you sign in with Google, Anthropic or Google's Gemini API when you use an AI feature with your own key, Open Food Facts (the barcode number only) when you scan a product, and Hugging Face when you download the on-device model. When you tap Share on a workout, the app creates a picture of it on your phone and passes it only to the app you pick.</p>
 
 <h2>Keeping and deleting your data</h2>
 <ul>
   <li><b>Delete everything:</b> Settings › Delete all data removes your log from the phone and, if you're signed in, from your Google Drive.</li>
   <li><b>Sign out:</b> removes the phone's copy. Your Drive copy stays until you delete it.</li>
   <li><b>Remove the app's access:</b> at <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>, choose SBL Gym and remove access. To delete the hidden app data from Drive, open Google Drive on the web, go to Settings › Manage apps, choose SBL Gym › Options › Delete hidden app data.</li>
-  <li><b>Uninstalling</b> the app deletes everything stored on the phone.</li>
+  <li><b>Uninstalling</b> the app deletes everything stored on the phone, including progress photos and the on-device model.</li>
+  <li><b>Progress photos:</b> delete them one by one in Progress › Body; Settings › Delete all data removes them too.</li>
+  <li><b>The on-device model:</b> Settings › AI › On-device › Delete.</li>
   <li><b>Your API keys:</b> Settings › AI › Remove, or revoke them in the Anthropic Console or Google AI Studio.</li>
 </ul>
 
 <h2>Security</h2>
-<p>Connections to Google, Anthropic and Open Food Facts are encrypted (HTTPS). Data on the phone is kept in the app's private storage, which other apps can't read.</p>
+<p>Connections to Google, Anthropic, Open Food Facts and Hugging Face are encrypted (HTTPS). The app checks each downloaded model file against its published SHA-256 fingerprint before using it. Data on the phone is kept in the app's private storage, which other apps can't read.</p>
 
 <h2>Children</h2>
 <p>SBL Gym isn't directed to children under 13 and doesn't knowingly collect their information.</p>
